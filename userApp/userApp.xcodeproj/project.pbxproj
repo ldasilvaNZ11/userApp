@@ -14,6 +14,8 @@
 		B11C0682249982A800E436A6 /* userAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11C0681249982A800E436A6 /* userAppTests.swift */; };
 		B11C068D249982A800E436A6 /* userAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11C068C249982A800E436A6 /* userAppUITests.swift */; };
 		B11C069B249984B300E436A6 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11C069A249984B300E436A6 /* TableViewController.swift */; };
+		B1CB30E424AAA57A008ACF85 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB30E324AAA57A008ACF85 /* Networking.swift */; };
+		B1CB30E624AAFD06008ACF85 /* SampleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB30E524AAFD06008ACF85 /* SampleScreen.swift */; };
 		B1EFBE1F24A313160071660C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EFBE1E24A313160071660C /* UserCell.swift */; };
 		B1EFBE2124A3141E0071660C /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EFBE2024A3141E0071660C /* Users.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +51,8 @@
 		B11C068C249982A800E436A6 /* userAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userAppUITests.swift; sourceTree = "<group>"; };
 		B11C068E249982A800E436A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B11C069A249984B300E436A6 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B1CB30E324AAA57A008ACF85 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		B1CB30E524AAFD06008ACF85 /* SampleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScreen.swift; sourceTree = "<group>"; };
 		B1EFBE1E24A313160071660C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B1EFBE2024A3141E0071660C /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,7 +109,9 @@
 				B11C066C249982A000E436A6 /* SceneDelegate.swift */,
 				B11C069A249984B300E436A6 /* TableViewController.swift */,
 				B1EFBE1E24A313160071660C /* UserCell.swift */,
+				B1CB30E324AAA57A008ACF85 /* Networking.swift */,
 				B1EFBE2024A3141E0071660C /* Users.swift */,
+				B1CB30E524AAFD06008ACF85 /* SampleScreen.swift */,
 				B11C0673249982A700E436A6 /* Assets.xcassets */,
 				B11C0675249982A800E436A6 /* LaunchScreen.storyboard */,
 				B11C0678249982A800E436A6 /* Info.plist */,
@@ -264,6 +270,8 @@
 				B1EFBE1F24A313160071660C /* UserCell.swift in Sources */,
 				B11C066B249982A000E436A6 /* AppDelegate.swift in Sources */,
 				B1EFBE2124A3141E0071660C /* Users.swift in Sources */,
+				B1CB30E624AAFD06008ACF85 /* SampleScreen.swift in Sources */,
+				B1CB30E424AAA57A008ACF85 /* Networking.swift in Sources */,
 				B11C066D249982A000E436A6 /* SceneDelegate.swift in Sources */,
 				B11C069B249984B300E436A6 /* TableViewController.swift in Sources */,
 			);
