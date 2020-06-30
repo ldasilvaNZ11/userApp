@@ -21,15 +21,19 @@ class UserCell: UITableViewCell {
         addSubview(websiteImage)
 
         // setting constraints for the subviews
+        setLabelConstraints()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setLabelConstraints() {
         backgroundCardConstraints()
         usernameConstraints()
         nameConstraints()
         websiteImageConstraints()
         websiteConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     var backgroundCard: UIView = {

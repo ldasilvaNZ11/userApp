@@ -10,22 +10,36 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    var users : [User] = []
+    var users = [User]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     fileprivate func setUpTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToSecondScreen))
+        self.navigationItem.rightBarButtonItem = add
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 150
         tableView.allowsSelection = false
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.title = "Users"
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        users = fetchData()
+        fetchData()
         setUpTableView()
+    }
+
+    @objc func goToSecondScreen() {
+        let sampleScreen = SampleScreen()
+        self.navigationController?.present(sampleScreen, animated: true)
     }
 
     // MARK: - Table view data source
@@ -43,8 +57,6 @@ class TableViewController: UITableViewController {
         // Configure the cell...
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserCell
         cell.layer.cornerRadius = 15
-//        let t: Int = indexPath.row
-//        cell.backgroundColor = (t%2==1) ? .systemTeal: .systemPink
         let user = users[indexPath.row]
         cell.setCellInformation(field: user)
         return cell
@@ -53,10 +65,14 @@ class TableViewController: UITableViewController {
 
 extension TableViewController {
 
-    func fetchData() -> [User] {
-        let info1 = User(id: 1, name: "Lucas", username: "Silva", website: "www.lucassilva.com")
-        let info2 = User(id: 2, name: "Caitlin", username: "Foley", website: "www.caitlinfoley.com")
-
-        return [info1, info2]
+    func fetchData() {
+        Networking.shared.getUsers { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let usersRes):
+                self?.users = usersRes
+            }
+        }
     }
 }
