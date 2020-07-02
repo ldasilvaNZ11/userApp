@@ -33,6 +33,7 @@ fileprivate func setUpTextField(_ textField: UITextField,placeHolder: String) {
 class SampleScreen: UIViewController {
 
     var delegate: PassingUser?
+    var defaults = UserDefaults.standard
 
     var titleLabel:UILabel = {
         let titles = UILabel()
@@ -82,8 +83,40 @@ class SampleScreen: UIViewController {
         return button
     }()
 
+    var save: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Save", for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(saveCurrentUser), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    var load: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Load", for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(loadCurrentUser), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     func isStringContainsOnlyNumbers(string: String) -> Bool {
         return string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    var text:String?
+    @objc fileprivate func saveCurrentUser() {
+        text = idTF.text
+        defaults.set(text, forKey: "id")
+    }
+
+    @objc fileprivate func loadCurrentUser() {
+        text = defaults.string(forKey: "id")
+        idTF.text = text
     }
 
     enum SubmitError: Error{
@@ -165,6 +198,16 @@ class SampleScreen: UIViewController {
         submit.heightAnchor.constraint(equalToConstant: 45).isActive = true
         submit.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         submit.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+
+        save.topAnchor.constraint(equalTo: submit.bottomAnchor, constant: 30).isActive = true
+        save.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        save.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        save.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+
+        load.topAnchor.constraint(equalTo: save.bottomAnchor, constant: 30).isActive = true
+        load.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        load.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        load.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -177,6 +220,8 @@ class SampleScreen: UIViewController {
         view.addSubview(companyTF)
         view.addSubview(titleLabel)
         view.addSubview(submit)
+        view.addSubview(save)
+        view.addSubview(load)
         setUpView()
     }
 }
