@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PassingUser {
+    func passUser(user: User)
+}
+
 fileprivate func setUpTextField(_ textField: UITextField,placeHolder: String) {
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.placeholder = placeHolder
@@ -27,6 +31,8 @@ fileprivate func setUpTextField(_ textField: UITextField,placeHolder: String) {
 }
 
 class SampleScreen: UIViewController {
+
+    var delegate: PassingUser?
 
     var titleLabel:UILabel = {
         let titles = UILabel()
@@ -101,6 +107,8 @@ class SampleScreen: UIViewController {
             let companys = Company(name: company)
             let user = User(id: id, name: name, username: username, website: website, address: address, company: companys)
             print(user)
+            delegate?.passUser(user: user)
+            dismiss(animated: true, completion: nil)
             nameTextField.text=""
             adrTF.text=""
             companyTF.text=""
@@ -111,6 +119,17 @@ class SampleScreen: UIViewController {
         catch {
             print(error)
             //we can use an Alert Controller here to make a pop up with an appropriate message
+            let alertController = UIAlertController(title: "Form incorrectly filled", message: "Please fill all the details correctly", preferredStyle: .alert)
+            alertController.addTextField { (textField) in
+                textField.placeholder = "Textfield"
+            }
+            alertController.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (action) in
+                guard let text = alertController.textFields?.first?.text else { print("Textfield empty"); return}
+            }))
+//            alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+//            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//            alertController.addAction(UIAlertAction(title: "Destructive", style: .destructive, handler: nil))
+            self.present(alertController, animated: true)
         }
 
     }

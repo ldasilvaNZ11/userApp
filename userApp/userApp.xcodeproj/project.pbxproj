@@ -110,14 +110,14 @@
 				B11C066A249982A000E436A6 /* AppDelegate.swift */,
 				B11C066C249982A000E436A6 /* SceneDelegate.swift */,
 				B11C069A249984B300E436A6 /* TableViewController.swift */,
+				B1CB30E524AAFD06008ACF85 /* SampleScreen.swift */,
+				B1CB30E724AB0F47008ACF85 /* MasterTabController.swift */,
 				B1EFBE1E24A313160071660C /* UserCell.swift */,
 				B1CB30E324AAA57A008ACF85 /* Networking.swift */,
 				B1EFBE2024A3141E0071660C /* Users.swift */,
-				B1CB30E524AAFD06008ACF85 /* SampleScreen.swift */,
 				B11C0673249982A700E436A6 /* Assets.xcassets */,
 				B11C0675249982A800E436A6 /* LaunchScreen.storyboard */,
 				B11C0678249982A800E436A6 /* Info.plist */,
-				B1CB30E724AB0F47008ACF85 /* MasterTabController.swift */,
 			);
 			path = userApp;
 			sourceTree = "<group>";
